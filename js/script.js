@@ -38,8 +38,15 @@ function setGameElements() {
 			resultsElem.style.display = 'block';
 			break;
 		case 'ended':
+			newGameElem.style.display = 'block';
 			newGameBtn.innerText = 'Play again';
+			pickElem.style.display = 'none';
+			resultsElem.style.display = 'block';
+			break;
 		case 'notStarted':
+			resultsElem.style.display = 'none';
+			pickElem.style.display = 'none';
+			break;
 		default:
 			newGameElem.style.display = 'block';
 			pickElem.style.display = 'none';
@@ -57,7 +64,7 @@ function setGamePoints() {
 // Setting new game 
 function newGame() {
 	player.name = prompt('Please enter your name', 'imie gracza');
-	if(player.name) {
+	if (player.name) {
 		player.score = computer.score = 0;
 		gameState = 'started';
 		setGameElements();
@@ -69,7 +76,7 @@ function newGame() {
 	playerPickElem.innerHTML = 'Player Selection';
 	computerPickElem.innerHTML = 'Computer Selection';
 	playerResultElem.innerHTML = 'Player Choice';
-	computerResultElem.innerHTML = 'Computer Chocice';
+	computerResultElem.innerHTML = 'Computer Choice';
 	setGamePoints(); 
 }
 
@@ -87,26 +94,31 @@ pickScissors.addEventListener('click', function() {
 });
 
 // Comparing choices
+var winnerIs = '';
 function checkRoundWinner(playerPick, computerPick) {
-	 playerResultElem.innerHTML = computerResultElem.innerHTML = ' ';
+	playerResultElem.innerHTML = computerResultElem.innerHTML = ' ';
 	
-	var winnerIs = 'player';
-	
-	if(playerPick == computerPick) {
+	if (playerPick === computerPick) {
 		winnerIs = 'noone'; // draw
-	} else if(
-		(computerPick == 'rock' && playerPick == 'scissors') ||
-		(computerPick == 'scissors' && playerPick == 'paper') ||
-		(computerPick == 'paper' && playerPick == 'rock')) {
+	} else if (
+		(computerPick === 'rock' && playerPick === 'scissors') ||
+		(computerPick === 'scissors' && playerPick === 'paper') ||
+		(computerPick === 'paper' && playerPick === 'rock')) {
 		
 		winnerIs = 'computer';
+	} else {
+		winnerIs = 'player';
 	}
-	
-	if(winnerIs == 'player') {
+}
+
+// Adding points and statement, who won the round
+
+function addPoints() {
+	if (winnerIs == 'player') {
 		playerResultElem.innerHTML = 'Win!';
 		computerResultElem.innerHTML = 'Lose!';
 		player.score++;
-	} else if(winnerIs == 'computer') {
+	} else if (winnerIs == 'computer') {
 		computerResultElem.innerHTML = 'Win!';
 		playerResultElem.innerHTML = 'Lose!';
 		computer.score++;
@@ -143,6 +155,7 @@ function playerPick(playerPick) {
 	computerPickElem.innerHTML = computerPick;
 	
 	checkRoundWinner(playerPick, computerPick);
+	addPoints();
 	endGame();
 }
 
