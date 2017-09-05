@@ -114,11 +114,11 @@ function checkRoundWinner(playerPick, computerPick) {
 // Adding points and statement, who won the round
 
 function addPoints() {
-	if (winnerIs == 'player') {
+	if (winnerIs === 'player') {
 		playerResultElem.innerHTML = 'Win!';
 		computerResultElem.innerHTML = 'Lose!';
 		player.score++;
-	} else if (winnerIs == 'computer') {
+	} else if (winnerIs === 'computer') {
 		computerResultElem.innerHTML = 'Win!';
 		playerResultElem.innerHTML = 'Lose!';
 		computer.score++;
