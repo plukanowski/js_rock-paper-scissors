@@ -1,7 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+body {
+	background: #41453E;
+	font-family: 'Oswald', sans-serif;
+	color: #fff;
+}
+
 .container {
 	padding: 25px 0;
 }
 
 .row {
 	padding: 5px 0;
+}
+
+h1 {
+	margin: 50px 0 10px;
+	font-size: 48px;
+	color: #fff;
+	letter-spacing: 5px;
+}
+
+.logo {
+	text-align: center;
+	margin-bottom: 100px;
+}
+
+.logo span {
+	display: inline-block;
+	margin: 5px 15px;
+	padding: 10px 30px;
+	font-size: 24px;
+	letter-spacing: 3px;
+}
+
+.btn {
+	padding: 10px 40px;
+	font-size: 16px; 
+	color: #41453E;
+}
+
+.btn:focus,.btn:active:focus,.btn.active:focus,
+.btn.focus,.btn:active.focus,.btn.active.focus {
+    outline: none;
+}
+
+.player-pick .btn {
+	width: 200px;
+	margin: 0 15px;
+	transition: .3s;
+	text-align: left;
+}
+
+.player-pick .btn .choice {
+	font-size: 24px;
+	background: #41453E;
+	padding: 10px;
+}
+
+.player-pick .btn:hover {
+	background: #777777;
+} 
+
+.player-pick .btn span {
+	display: inline-block;
+}
+
+.player-pick .btn span:nth-child(2) {
+	padding: 0 10px;
+}
+
+.results-table {
+	font-size: 18px;
+}
+
+.results-table .badge {
+	display: block;
+	width: 50px;
+	margin: 15px auto;
+	padding: 15px;
+	font-size: 24px;
+}
+
+@media (max-width: 768px) {
+	
+	.container {
+		padding: 0 10px;
+	}
+	
+	.row {
+		margin: 0;
+	}
+	
+	.logo {
+		margin-bottom: 15px;
+	}
+
+	.player-pick .btn {
+		margin: 15px;
+	}
+	
+	.results-table {
+		font-size: 16px;
+	}
 }
